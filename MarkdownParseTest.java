@@ -8,6 +8,12 @@ import java.util.List;
 
 public class MarkdownParseTest {
 
+    /**
+     *
+     */
+    private static final String SNIPPET_MD = "./Snippet.md";
+
+
     @Test
     public void testFile1() throws IOException {
         String contents= Files.readString(Path.of("./test-file.md"));
@@ -65,7 +71,12 @@ public class MarkdownParseTest {
     }
 
 
-
+    @Test
+    public void Snippet1() throws IOException {
+        String contents= Files.readString(Path.of(SNIPPET_MD));
+        List<String> expect = List.of("https://something.com", "some-thing.html");
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
     
     
 }
